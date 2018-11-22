@@ -1,0 +1,71 @@
+<mat-card class="example-card">
+  <mat-card-content>
+    <mat-tab-group>
+        <mat-tab label="Login">
+            <form class="example-form" (ngSubmit)="login()" #LoginForm="ngForm">
+                <table class="example-full-width" cellspacing="0">
+                  <tr>
+                    <td>
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                        <button type="submit" mat-raised-button color="primary" class="float-right">Login</button>   
+                    </td>
+                  </tr>
+                </table>
+              </form>
+        </mat-tab>
+        <mat-tab label="Register">
+            <form class="example-form">
+                <table class="example-full-width" cellspacing="0">
+                  <tr>
+                    <td>
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Confirm Password" [(ngModel)]="cpassword" type="password" name="password" required>
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Email" [(ngModel)]="email" type="email" name="email" required>
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button type="submit" mat-raised-button color="primary" class="float-right">Register</button>
+                      <button type="reset" mat-raised-button color="warn" class="float-right mx-2">Reset</button>
+                    </td>
+                  </tr>
+                </table>
+              </form>
+        </mat-tab>
+      </mat-tab-group>
+  </mat-card-content>
+</mat-card>

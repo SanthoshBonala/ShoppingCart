@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>My First App</span>
+      <span class="example-spacer"></span>
+      <button mat-button *ngIf="loginservice.getStatus()"routerLink="/dashboard">Dashboard</button>
+      <button mat-button *ngIf="loginservice.getStatus()"routerLink="/account">Account</button>
+      <button mat-button *ngIf="loginservice.getStatus()"routerLink="/myorders">My Orders</button>
+      <button mat-button *ngIf="loginservice.getStatus()" (click)="loginservice.logout()">Logout</button>
+      <button mat-button *ngIf="!loginservice.getStatus()" routerLink="/login">Login</button>
+    </mat-toolbar-row>
+  </mat-toolbar>
