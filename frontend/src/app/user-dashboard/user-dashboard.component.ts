@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {DomSanitizer} from '@angular/platform-browser';
-import {MatIconRegistry} from '@angular/material';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 import { DialogService } from '../services/dialog/dialog.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-user-dashboard',
+  templateUrl: './user-dashboard.component.html',
+  styleUrls: ['./user-dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class UserDashboardComponent implements OnInit {
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,private dialogservice: DialogService) {
     iconRegistry.addSvgIcon(

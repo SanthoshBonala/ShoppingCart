@@ -1,0 +1,27 @@
+
+<h3>Enter the following details:</h3>
+<form (submit)="onSubmit()">
+  <mat-grid-list cols="1" rowHeight="330px" >
+    <mat-grid-tile>
+      <div class="container-product">
+        <mat-form-field>
+          <input formControlName="title" matInput placeholder="Title*">
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="desc" matInput placeholder="Description*">
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="price" matInput placeholder="Price*">
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+        <input type="file" />
+        <div>
+          <button type="submit" mat-raised-button color="primary" class="float-right">Submit</button>
+          <button type="reset" mat-raised-button color="warn" class="float-right mx-2">Reset</button>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>

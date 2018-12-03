@@ -11,13 +11,30 @@ import { LoginService } from './services/login/loginservice.service';
 import 'hammerjs';
 import { CustomMaterialModule } from './app.material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
+import { DialogService } from './services/dialog/dialog.service';
+import { ProductComponent } from './product/product.component';
+import { AccountComponent } from './account/account.component';
+import { OrdersComponent } from './orders/orders.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { PaymentComponent } from './payment/payment.component';
+import { ReviewComponent } from './review/review.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    NavbarComponent
+    NavbarComponent,
+    MatConfirmDialogComponent,
+    ProductComponent,
+    AccountComponent,
+    OrdersComponent,
+    UserDashboardComponent,
+    CheckoutComponent,
+    PaymentComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +45,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [LoginService],
+  providers: [LoginService, DialogService],
   bootstrap: [AppComponent],
+  entryComponents: [MatConfirmDialogComponent, ProductComponent]
 })
 export class AppModule { }

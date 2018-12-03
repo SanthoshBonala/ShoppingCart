@@ -1,0 +1,115 @@
+<mat-horizontal-stepper #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+        <ng-template matStepLabel>Add Address</ng-template>
+        <div class="checkout">
+
+            <mat-radio-group class="example-radio-group" [(ngModel)]="selectedaddress">
+                <mat-radio-button class="example-radio-button" *ngFor="let address of addresses" [value]="address">
+                  {{address}}
+                </mat-radio-button>
+            </mat-radio-group>
+        
+              <div>
+                  <button mat-raised-button color="primary" (click)="addaddress()">
+                      <mat-icon> person_add</mat-icon> Add Address
+                  </button>
+              </div>
+        
+              <div *ngIf="!isaddress" >
+                  <button mat-raised-button color="primary" matStepperNext class="gotopayment">
+                      Payment
+                      <mat-icon>arrow_forward</mat-icon>
+                    </button>
+              </div>
+            <form class="example-form" *ngIf="isaddress">
+              <mat-grid-list cols="2" rowHeight="100px" gutterSize="20px">
+                <mat-grid-tile>
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Street">
+                  </mat-form-field>          
+                </mat-grid-tile>
+                
+                <mat-grid-tile>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="city">
+                      </mat-form-field>
+                </mat-grid-tile>
+            
+                <mat-grid-tile>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="state">
+                      </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="zipCode">
+                      </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile></mat-grid-tile>
+                <mat-grid-tile>
+                  <button mat-raised-button color="primary" matStepperNext>
+                    Payment
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </mat-grid-tile>
+              </mat-grid-list>
+            </form>
+        </div>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+        <ng-template matStepLabel>Payment Details</ng-template>
+        <div class="payment">
+
+            <mat-radio-group class="example-radio-group" [(ngModel)]="selectedpayment">
+                <mat-radio-button class="example-radio-button" *ngFor="let payment of payments" [value]="payment">
+                  {{payment}}
+                </mat-radio-button>
+            </mat-radio-group>
+        
+              <div>
+                  <button mat-raised-button color="primary" (click)="addnewcard()" >
+                      <mat-icon> library_add</mat-icon> Add New Card
+                  </button>
+              </div>
+        
+              <div *ngIf="!gngtoaddnew" >
+                  <button mat-raised-button color="primary" (click)="gotoreview()" class="gotoreview" matStepperNext>
+                      Review
+                      <mat-icon>arrow_forward</mat-icon>
+                    </button>
+              </div>
+            <form class="example-form" *ngIf="gngtoaddnew">
+              <mat-grid-list cols="2" rowHeight="100px" gutterSize="20px">
+                <mat-grid-tile>
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Card Number">
+                  </mat-form-field>          
+                </mat-grid-tile>
+                
+                <mat-grid-tile>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="CVV">
+                      </mat-form-field>
+                </mat-grid-tile>
+            
+                <mat-grid-tile>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Expiry Date">
+                      </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                  <button mat-raised-button color="primary" (click)="gotoreview()" matStepperNext>
+                    Add Card & Review
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </mat-grid-tile>
+              </mat-grid-list>
+            </form>
+        </div>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Review</ng-template>
+    </mat-step>
+  </mat-horizontal-stepper>
+
+
