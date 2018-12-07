@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DialogService } from '../services/dialog/dialog.service';
+import { DataService } from '../services/dataservice/dataservice.service';
+import { Product } from '../models/product.model';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -9,8 +11,13 @@ import { DialogService } from '../services/dialog/dialog.service';
   styleUrls: ['./user-dashboard.component.css']
 })
 export class UserDashboardComponent implements OnInit {
-
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,private dialogservice: DialogService) {
+  data: Product[];
+  imageurl = "http://localhost:3000/image?_id="
+  constructor(
+    iconRegistry: MatIconRegistry,
+    sanitizer: DomSanitizer,
+    private dialogservice: DialogService,
+    private dataservice: DataService) {
     iconRegistry.addSvgIcon(
         'edit',
         sanitizer.bypassSecurityTrustResourceUrl('assets/img/edit.svg'))
@@ -19,12 +26,16 @@ export class UserDashboardComponent implements OnInit {
         sanitizer.bypassSecurityTrustResourceUrl('assets/img/delete.svg'))
   }
 
-  ngOnInit() { }
-
-  onDelete(){
-    this.dialogservice.opendeletedialog()
+  ngOnInit() { 
+    this.dataservice.getData().subscribe(
+      res => {
+        console.log(res)
+        this.data = res
+      }
+    )
   }
-  onEdit(){
-    this.dialogservice.openEditDialog()
+
+  addToCart (product: Product) {
+    this.dataservice.addToCart(product)
   }
 }

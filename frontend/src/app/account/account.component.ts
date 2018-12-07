@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DialogService } from '../services/dialog/dialog.service';
+import { DataService } from '../services/dataservice/dataservice.service';
+import { Profile } from '../models/profile.model';
 
 @Component({
   selector: 'app-account',
@@ -6,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent implements OnInit {
+  profile: Profile;
+  constructor(private dialogservice: DialogService, private dataservice: DataService) { }
 
-  constructor() { }
+  ngOnInit() {
+    this.dataservice
+      .getProfile()
+      .subscribe(res =>{
+        console.log(res)
+        this.profile = res
+      })
+  }
 
-  ngOnInit() { }
+  editprofile () {
+    this.dialogservice
+    .openProfileEditDialog(this.profile)
+    .afterClosed()
+    .subscribe(
+      res => {
+        if (res) {
+          this.ngOnInit()
+        }
+      })
+  }
 
 }

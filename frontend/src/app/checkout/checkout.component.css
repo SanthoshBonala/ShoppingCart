@@ -40,3 +40,6 @@
   .gotoreview {
     left: 30%;
   }
+  .spacer{
+    flex: 1 1 auto;
+  }

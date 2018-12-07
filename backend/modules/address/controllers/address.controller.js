@@ -3,7 +3,10 @@ const addressmodel = require('../../../models/address.model')
 let addaddress = (req, res) => {
     addressmodel.addaddress(req.body)
         .then(address => {                
-                return res.send('address added successfully')
+                return res.json({
+                    ...address,
+                    message: "address added successfully"
+                })
         })
         .catch(err => {
             return res.send(422, err.message)

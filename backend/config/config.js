@@ -1,6 +1,8 @@
 const config = {
     development: {
-        url: 'mongodb://localhost/hci'
+        url: 'mongodb://localhost/hci',
+        tokensecret: 'hciproject',
+        sessionsecret: 'hciproject'
     }
 }
 

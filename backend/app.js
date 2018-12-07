@@ -5,19 +5,26 @@ let cookieParser = require('cookie-parser')
 let logger = require('morgan')
 let indexRouter = require('./routes/index')
 let usersRouter = require('./routes/users')
-
+const cors = require('cors')
+const session = require('express-session')
+const config = require('./config/config')
 let app = express()
 require('./config/database')
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
-
+app.use(cors())
 app.use(logger('dev'))
 app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
-
+app.use(session({ 
+  secret: config.sessionsecret,
+  resave: false, 
+  saveUninitialized: true,
+  cookie: { secure: true }
+}))
 app.use('/', indexRouter)
 
 // catch 404 and forward to error handler

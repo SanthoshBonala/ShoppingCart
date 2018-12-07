@@ -7,8 +7,8 @@ import { LoginService } from '../services/login/loginservice.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor(private loginservice: LoginService) { }
+  loginservice: LoginService;
+  constructor(private ls: LoginService) { this.loginservice = this.ls }
 
   ngOnInit() { }
 

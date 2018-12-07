@@ -31,6 +31,16 @@ const schema = new Schema({
         type: Boolean,
         trim: true,
         required: [true, 'isBlocked is missing']
+    },
+    Username: {
+        type: String,
+        trim: true,
+        required: [true, 'Username is missing']
+    },
+    AccessToken: {
+        type: String,
+        trim: true,
+        default: ''
     }
 })
 
@@ -65,7 +75,8 @@ module.exports = {
     adduser: data => new user(data).save(),
     deleteuser: userid => user.findByIdAndRemove(userid),
     updateuser: (userid, data) => user.findByIdAndUpdate(userid, data),
-    getuserbyid: userid => user.findOne({ _id: userid })
+    getuserbyid: userid => user.findOne({ _id: userid }),
+    user: user
 }
 
 

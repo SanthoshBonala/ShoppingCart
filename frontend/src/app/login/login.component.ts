@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../services/login/loginservice.service';
-
+import { NgForm } from '@angular/forms';
+import swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,18 +10,44 @@ import { LoginService } from '../services/login/loginservice.service';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class LoginComponent implements OnInit {
-
+  @ViewChild('LoginForm') loginForm: NgForm;
+  @ViewChild('registerform') registerForm: NgForm;
   constructor(private router: Router, private loginservice: LoginService) { }
-  username: string;
-  password: string;
-  isLoggedIn: Boolean;
   ngOnInit() { }
   login() : void {
-    if(this.username == 'admin' && this.password == 'admin'){
-      this.loginservice.login()
-      this.router.navigate(["dashboard"]);
-    }else {
+   // console.log(this.loginForm.value.logindata)
+    this.loginservice
+    .login(this.loginForm.value.logindata)
+    .subscribe(res => {
+           this.loginForm.reset()
+           localStorage.setItem('token', res['token'])
+           localStorage.setItem('role', res['role'])
+           localStorage.setItem('id', res['id'])
+           if(res['role'] == 'admin'){
+              this.loginservice.setAdmin(true)
+              this.router.navigate(["dashboard"]);
+              return
+            }
+            this.loginservice.setAdmin(false)
+            this.router.navigate(["user"]);
+    },
+    err => {
+      console.log(err)
       alert("Invalid credentials");
-    }
-  }
+    })
+   }
+
+   register() {
+    this.loginservice
+    .register({ ...this.registerForm.value.registerdata, role: 'user', isBlocked: false})
+    .subscribe(
+      res => {
+        this.registerForm.reset()
+        swal('congratulations!','Registration successfull','success')
+      },
+      err => {
+        swal('Failure','check details','error')
+      }
+    )
+   }
 }

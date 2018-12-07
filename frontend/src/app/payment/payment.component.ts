@@ -7,9 +7,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit {
-  private selectedpayment: String = null
-  private payments: String[] = ['Card1', 'Card2', 'Card3']
-  private gngtoaddnew: Boolean = false
+  selectedpayment: String = null
+  payments: String[] = ['Card1', 'Card2', 'Card3']
+  gngtoaddnew: Boolean = false
   constructor(private router: Router) { }
 
   ngOnInit() { }

@@ -10,7 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginService } from './services/login/loginservice.service';
 import 'hammerjs';
 import { CustomMaterialModule } from './app.material.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
 import { DialogService } from './services/dialog/dialog.service';
 import { ProductComponent } from './product/product.component';
@@ -20,6 +20,16 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { CheckoutComponent } from './checkout/checkout.component';
 import { PaymentComponent } from './payment/payment.component';
 import { ReviewComponent } from './review/review.component';
+import { DataService } from './services/dataservice/dataservice.service';
+import { NotificationService } from './services/notification/notification.service';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { GuardService } from './services/guard/guard';
+import { CanDeactivateGuard } from './services/guard/deactivateguard';
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import { AuthService } from './services/authentication/auth.service';
+import { AuthInterceptor } from './services/interceptors/auth.interceptor';
+import { UserOrdersComponent } from './user-orders/user-orders.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +44,11 @@ import { ReviewComponent } from './review/review.component';
     UserDashboardComponent,
     CheckoutComponent,
     PaymentComponent,
-    ReviewComponent
+    ReviewComponent,
+    NotFoundComponent,
+    ProfileEditComponent,
+    UserOrdersComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,
@@ -43,10 +57,20 @@ import { ReviewComponent } from './review/review.component';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [LoginService, DialogService],
+  providers: [
+    LoginService,
+    DialogService,
+    DataService,
+    NotificationService,
+    GuardService,
+    CanDeactivateGuard,
+    AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent],
-  entryComponents: [MatConfirmDialogComponent, ProductComponent]
+  entryComponents: [MatConfirmDialogComponent, ProductComponent, ProfileEditComponent]
 })
 export class AppModule { }

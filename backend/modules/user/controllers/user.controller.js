@@ -53,3 +53,15 @@ let updateuser = (req, res) => {
 }
 module.exports.updateuser = updateuser
 
+let login = (req, res) => {
+    usermodel.updateuser(req.session.user.id,{AccessToken: req.session.token})
+        .then(user => {
+            res.json({ token: req.session.token, role: req.session.user.role, id: req.session.user.id })
+        })
+        .catch(err => {
+            return res.send(422, err.message)
+        })
+      
+}
+module.exports.login = login
+
