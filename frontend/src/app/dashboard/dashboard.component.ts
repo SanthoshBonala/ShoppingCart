@@ -5,7 +5,7 @@ import { DialogService } from '../services/dialog/dialog.service';
 import { DataService } from '../services/dataservice/dataservice.service';
 import { Product } from '../models/product.model';
 import { NotificationService } from '../services/notification/notification.service';
-
+import config from 'src/app/config/config.env'
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -13,7 +13,7 @@ import { NotificationService } from '../services/notification/notification.servi
 })
 export class DashboardComponent implements OnInit {
   data: Product[]
-  imageurl = "http://localhost:3000/image?_id="
+  imageurl =  config.url + "image?_id="
   constructor(
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer,
