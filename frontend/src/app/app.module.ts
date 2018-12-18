@@ -71,6 +71,6 @@ import { UsersListComponent } from './users-list/users-list.component';
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [MatConfirmDialogComponent, ProductComponent, ProfileEditComponent]
+  entryComponents: [MatConfirmDialogComponent, ProductComponent, ProfileEditComponent, ReviewComponent]
 })
 export class AppModule { }

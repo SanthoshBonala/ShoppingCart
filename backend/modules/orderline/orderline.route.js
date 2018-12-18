@@ -10,5 +10,6 @@ router.post('/edit/:id', ordercontroller.updateorder)
 
 router.get('/getallforuser/:userid', ordercontroller.getallorderforauser)
 
+router.get('/getorder/:userid', ordercontroller.getorderforanid)
 
 module.exports = router

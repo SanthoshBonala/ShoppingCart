@@ -6,14 +6,16 @@ import swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  encapsulation: ViewEncapsulation.Emulated
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
   @ViewChild('LoginForm') loginForm: NgForm;
   @ViewChild('registerform') registerForm: NgForm;
   constructor(private router: Router, private loginservice: LoginService) { }
-  ngOnInit() { }
+  ngOnInit() {
+    console.log(document.body.classList)
+    document.body.classList.add('body')
+  }
   login() : void {
    // console.log(this.loginForm.value.logindata)
     this.loginservice
@@ -23,6 +25,8 @@ export class LoginComponent implements OnInit {
            localStorage.setItem('token', res['token'])
            localStorage.setItem('role', res['role'])
            localStorage.setItem('id', res['id'])
+           document.body.classList.remove('body')
+           document.body.classList.add('background')
            if(res['role'] == 'admin'){
               this.loginservice.setAdmin(true)
               this.router.navigate(["dashboard"]);

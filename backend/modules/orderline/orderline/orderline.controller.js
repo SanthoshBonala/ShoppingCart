@@ -24,7 +24,7 @@ let deleteorder = (req, res) => {
 module.exports.deleteorder = deleteorder
 
 let updateorder = (req, res) => {
-    orderlinemodel.updateorder(req.params.id,req.body)
+    orderlinemodel.updateorder(req.params.id,req.body.reviewformdata)
         .then(order => {
             return res.send('order updated successfully')
         })
@@ -44,3 +44,14 @@ let getallorderforauser = (req,res) => {
     })
 }
 module.exports.getallorderforauser = getallorderforauser
+
+let getorderforanid = (req,res) => {
+    orderlinemodel.getorderforanid(req.params.userid)
+    .then(order => {
+        return res.json(order)
+    })
+    .catch(err => {
+        return res.send(422, err.message)
+    })
+}
+module.exports.getorderforanid = getorderforanid

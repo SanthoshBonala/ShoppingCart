@@ -126,4 +126,17 @@ export class DataService {
   getallusers () {
     return this.httpclient.get<UserData[]>(config.url + 'user/all')
   }
+  updateproduct (formdata) {
+    console.log(formdata.get('name'))
+    return this.httpclient.post(config.url + 'product/edit/' + formdata.get('id'), {
+      name: formdata.get('name'),
+      description: formdata.get('description'),
+      price: formdata.get('price'),
+      formdata
+    }, {responseType: 'text'})
+  }
+
+  updatereview (orderid, data) {
+    return this.httpclient.post(config.url + 'order/edit/' + orderid, { ...data }, {responseType: 'text'})
+  }
 }

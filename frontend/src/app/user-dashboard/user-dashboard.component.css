@@ -20,3 +20,6 @@ img{
 .mat-icon:hover{
     cursor: pointer;
 }
+body{
+    background-image: none;
+}

@@ -36,7 +36,7 @@ const order = mongoose.model('order', schema)
 
 
 module.exports = {
-   // getorders: (user_id, cb) => order.find({userid: user_id}, cb).populate('productid'),
+    getorders: user_id => order.find({userid: user_id}),
     placeorder: data => new order(data).save(),
     deleteorder: orderid => order.findByIdAndRemove(orderid),
     updateorder: (orderid, data) => order.findByIdAndUpdate(orderid, data),

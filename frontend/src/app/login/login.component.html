@@ -34,8 +34,25 @@
                   <tr>
                     <td>
                       <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Name" ngModel #name="ngModel" type="name" name="name" required>
+                        <mat-error *ngIf="!name.valid && name.touched">This field is mandatory.</mat-error>
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <mat-form-field class="example-full-width">
                         <input matInput placeholder="Username" ngModel #Username="ngModel" name="Username" required>
                         <mat-error *ngIf="!Username.valid && Username.touched">This field is mandatory.</mat-error>
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Email" ngModel #emailaddress="ngModel" type="email" name="emailaddress" required>
+                        <mat-error *ngIf="!emailaddress.valid && emailaddress.touched">This field is mandatory.</mat-error>
+                        <mat-error *ngIf="emailaddress.hasError('email') && emailaddress.valid">Enter valid email.</mat-error>
                       </mat-form-field>
                     </td>
                   </tr>
@@ -58,24 +75,8 @@
                   <tr>
                     <td>
                       <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Email" ngModel #emailaddress="ngModel" type="email" name="emailaddress" required>
-                        <mat-error *ngIf="!emailaddress.valid && emailaddress.touched">This field is mandatory.</mat-error>
-                      </mat-form-field>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <mat-form-field class="example-full-width">
                         <input matInput placeholder="Phonenumber" ngModel #phonenumber="ngModel" name="phonenumber" required>
                         <mat-error *ngIf="!phonenumber.valid && phonenumber.touched">This field is mandatory.</mat-error>
-                      </mat-form-field>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Name" ngModel #name="ngModel" type="name" name="name" required>
-                        <mat-error *ngIf="!name.valid && name.touched">This field is mandatory.</mat-error>
                       </mat-form-field>
                     </td>
                   </tr>

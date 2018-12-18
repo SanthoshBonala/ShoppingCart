@@ -53,6 +53,16 @@ export class DashboardComponent implements OnInit {
    // console.log(product)
     this.dialogservice
     .openEditDialog(product)
+    .afterClosed()
+    .subscribe( res => {
+      this.dataservice
+        .updateproduct(res)
+        .subscribe(
+          res => {
+            this.ns.success(res)
+            this.ngOnInit()
+          })
+    })
   }
 
   oncreate(){

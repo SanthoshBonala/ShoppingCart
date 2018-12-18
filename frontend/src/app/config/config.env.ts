@@ -1,6 +1,6 @@
 const config =  {
     development: {
-        url: 'https://shopping-cart-hci.herokuapp.com/',
+        url: 'http://localhost:3000/',
         tokensecret: 'hciproject'
     },
     production: {

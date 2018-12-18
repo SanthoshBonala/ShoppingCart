@@ -5,6 +5,7 @@ import { ProductComponent } from 'src/app/product/product.component';
 import { Product } from 'src/app/models/product.model';
 import { ProfileEditComponent } from 'src/app/profile-edit/profile-edit.component';
 import { Profile } from 'src/app/models/profile.model';
+import { ReviewComponent } from 'src/app/review/review.component';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,7 @@ export class DialogService {
   }
 
   openEditDialog (product: Product) {
-    this.dialog.open(ProductComponent, {
+    return this.dialog.open(ProductComponent, {
       width: '40%',
       height: '70%',
       position: { top: "10%" },
@@ -44,6 +45,14 @@ export class DialogService {
       width: '40%',
       height: '70%',
       position: { top: "10%" }
+    })
+  }
+  openreviewdialog(order){
+    return this.dialog.open(ReviewComponent, {
+      width: '40%',
+      height: '70%',
+      position: { top: "10%" },
+      data: order
     })
   }
 }

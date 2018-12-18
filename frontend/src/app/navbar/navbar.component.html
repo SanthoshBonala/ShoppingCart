@@ -1,6 +1,6 @@
-<mat-toolbar color="primary">
+<mat-toolbar style="background-color: indigo;color: white; font: bold">
     <mat-toolbar-row>
-      <span>Shopping Cart</span>
+      <span>Shopping Gadgets</span>
       <span class="example-spacer"></span>
       <button mat-button *ngIf="loginservice.isAuthenticated() && loginservice.isAdmin()" routerLink="/dashboard">Dashboard</button>
       <button mat-button *ngIf="loginservice.isAuthenticated() && loginservice.isAdmin()" routerLink="/userslist">Users</button>

@@ -57,3 +57,38 @@ border-radius: 0px;
 .mat-form-field-flex {
     margin-top: 20px;
 }
+
+.success{
+    background-color: silver;
+    color: green;
+    animation: fadein 0.2s;
+    text-align: center;
+}
+
+.mat-simple-snackbar span {
+    text-align: center;
+    font: bold;
+    font-size: 1.5em;
+    margin: 10px;
+}
+
+.warn {
+    background-color: silver;
+    color: red;
+    animation: fadein 0.2s;
+    text-align: center;
+}
+
+.mat-simple-snackbar span {
+    text-align: center;
+    font: bold;
+    font-size: 1.5em;
+    margin: 10px;
+}
+
+.body{
+    background-image: url('/assets/img/gadgets.jpg')
+}
+.background{
+    background-color: white;
+}

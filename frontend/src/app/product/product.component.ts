@@ -26,8 +26,10 @@ export class ProductComponent implements OnInit {
     }
 
   onSubmit () {
-    this.dialog.close(new FormData(document.querySelector('#addproduct')))
-    this.ns.success('updated')
+    const formdata = new FormData(document.querySelector('#addproduct'))
+    formdata.append('id', this.data._id)
+    this.dialog.close(formdata)
+   // this.ns.success('updated')
   }
 
 }

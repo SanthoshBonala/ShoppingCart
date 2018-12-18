@@ -5,7 +5,7 @@
     <mat-grid-tile> CardNumber: {{ order.card.cardnumber }} </mat-grid-tile>
     <mat-grid-tile> NameonCard: {{ order.card.name }} </mat-grid-tile>
     <mat-grid-tile>
-      <button mat-raised-button color="warn" (click)="writereview(ele._id)"> 
+      <button mat-raised-button color="warn" (click)="writereview(order)"> 
         <mat-icon>rate_review</mat-icon>
         ReviewMessage</button>
       </mat-grid-tile> 
