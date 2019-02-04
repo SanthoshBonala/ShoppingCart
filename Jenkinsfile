@@ -7,7 +7,7 @@ node('slave'){
     
     sh "echo " + payload.ref
   }
-  if(check == 'True'){
+  if(check == 'Tru'){
     stage('checking when'){
      sh "echo when true"
     }
